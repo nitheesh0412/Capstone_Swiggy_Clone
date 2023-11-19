@@ -1,0 +1,36 @@
+.card{
+  width: 16rem;
+  height: 24rem;
+  transition: transform 0.3s ease-in-out;
+}
+.card-img-top{
+  width: 16rem;
+  height: 12rem;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+.offer{
+  font-weight:900;
+}
+.heading{
+  font-weight: bolder;
+  font-family:sans-serif
+}
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .card{
+    width: 16rem;
+    height: 24rem;
+  }
+  .card-img-top{
+    width: 16rem;
+    height: 200px
+  }
+}
+.text-shadow{
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  background-image: linear-gradient(to right, black 50%, transparent 50%);
+    background-clip: text;
+    color: transparent;
+}

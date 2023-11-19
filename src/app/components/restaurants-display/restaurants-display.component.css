@@ -1,0 +1,8 @@
+.input-wrapper {
+  /* border: auto auto 1px auto ; */
+  border-style: none none solid none
+}
+input:focus {
+  outline: none;
+  border: none;
+}

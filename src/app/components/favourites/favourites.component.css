@@ -1,0 +1,19 @@
+.card{
+  width: 16rem;
+  height: 24rem;
+  transition: transform 0.3s ease-in-out;
+}
+.card-img-top{
+  width: 16rem;
+  height: 12rem;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+.offer{
+  font-weight:900;
+}
+.heading{
+  font-weight: bolder;
+  font-family:sans-serif
+}

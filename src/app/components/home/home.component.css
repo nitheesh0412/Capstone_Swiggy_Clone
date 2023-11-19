@@ -1,0 +1,13 @@
+.logo-text{
+  font-weight: 700;
+  color: #3d4152;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.logo{
+  height : 75px;
+   width : 100px;
+}
+a{
+  text-decoration: none;
+}

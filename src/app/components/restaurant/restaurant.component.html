@@ -1,0 +1,30 @@
+<div class=" card shadow-lg mb-5 me-4 bg-white rounded">
+  
+    <img class="card-img-top rounded"
+      src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_1024/{{restaurant.info.cloudinaryImageId}}"
+      alt="image">  
+      <a routerLink="restaurant/{{restaurant.info.id}}" style="text-decoration: none;">
+    <div class="card-img-overlay " style="padding-top: 150px;">
+      <h2 *ngIf="restaurant.info.aggregatedDiscountInfoV3" class="text-light text-shadow  offer text-upper">
+        {{restaurant.info.aggregatedDiscountInfoV3.header}} {{restaurant.info.aggregatedDiscountInfoV3.subHeader}}</h2>
+        
+
+    </div></a>
+
+  <div class="card-body">
+    <div class="d-flex flex-wrap justify-content-between">
+      <div class="d-flex"><mat-icon [ngStyle]="{'color' : 'green'}">star</mat-icon>
+        <h4>{{restaurant.info.avgRating}}</h4>
+        <h6>({{restaurant.info.totalRatingsString}}ratings)</h6>
+      </div>
+
+      <h4>{{restaurant.info.sla.slaString}}</h4>
+<!-- 
+      <i class="bi" width="16" height="16" [ngClass]="{'bi-suit-heart-fill': isLiked, 'bi-suit-heart': !isLiked}" [ngStyle]="{'color' : 'red'}"
+        (click)="toggleLike()"></i> -->
+    </div>
+    <h3 class="card-title">{{restaurant.info.name}}</h3>
+    <h5 class="text-muted">{{restaurant.info.cuisines.slice(0,5)}}</h5>
+
+  </div>
+</div>

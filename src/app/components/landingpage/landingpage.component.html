@@ -1,0 +1,158 @@
+<ng-template class="template" #contentlogin let-offcanvas>
+  <div class="offcanvas-header">
+    <h2 class="offcanvas-title">Login</h2>
+
+    <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
+  </div>
+
+  <div class="offcanvas-body">
+    <form [formGroup]="userLogin">
+      <p>
+        <mat-form-field>
+          <mat-label>
+            mobile
+          </mat-label>
+          <input matInput class="border-0 matinput" 
+          placeholder="enter mobile number"
+          formControlName="phonelogin">
+          <mat-error class="" *ngIf="userLogin.get('phonelogin')?.invalid">should contain 10 digits</mat-error>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field>
+          <mat-label>Enter your password</mat-label>
+          <input matInput class="border-0 matinput"  [type]="hide ? 'password' : 'text'" formControlName="passwordlogin">
+          <button class="border-0 bg-body me-2" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="userLogin.get('passwordlogin')?.invalid">password should contain atleast 8 characters</mat-error>
+        </mat-form-field>
+      </p>
+
+
+
+    </form>
+    <button type="submit" (click)="loginAction()" [disabled]="!userLogin.valid"  (click)="offcanvas.dismiss('Cross click')"
+      class="btn  btn-block btn-lg text-white  loginbutton">LOGIN</button>
+
+    <div>Not a user <button class="border-0 text-primary bg-body" (click)="openEnd(contentsignup)"
+        (click)="offcanvas.close()">create an
+        account</button> </div>
+    <div class="text-end">
+    </div>
+  </div>
+</ng-template>
+
+<ng-template class="template" #contentsignup let-offcanvas>
+  <div class="offcanvas-header">
+    <h2 class="offcanvas-title">Signup</h2>
+
+    <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
+  </div>
+
+  <div class="offcanvas-body">
+    <form [formGroup]="userRegister">
+      <p class="">
+        <mat-form-field class=" ">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="" class="border-0 matinput" formControlName="name">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field >
+          <mat-label>Enter your email</mat-label>
+          <input matInput class="border-0 matinput" placeholder="pat@example.com" formControlName="email" required>
+          <mat-error class="" *ngIf="userRegister.get('email')?.invalid">enter correct email</mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <mat-label>
+            mobile
+          </mat-label>
+          <input matInput class="border-0 matinput" 
+          placeholder="enter mobile number"
+          formControlName="phone">
+          <mat-error class="" *ngIf="userRegister.get('phone')?.invalid">should contain 10 digits</mat-error>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field>
+          <mat-label>Enter your password</mat-label>
+          <input matInput class="border-0 matinput"  [type]="hide ? 'password' : 'text'" formControlName="password">
+          <button class="border-0 bg-body me-2" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="userRegister.get('password')?.invalid">password should contain atleast 8 characters</mat-error>
+        </mat-form-field>
+      </p>
+      <p>
+          <button type="submit" (click)="RegisterAction()" [disabled]="!userRegister.valid" (click)="offcanvas.dismiss('Cross click')"
+      class="btn  btn-block btn-lg text-white  loginbutton">Register</button>
+      </p>
+    </form>
+    
+
+
+    <div>Already a user <button class="border-0 bg-body text-primary" (click)="openEnd(contentlogin)"
+        (click)="offcanvas.close()">login</button>
+    </div>
+    <!-- <div class="text-end">
+      <button type="button" class="btn btn-outline-dark" (click)="offcanvas.close('Close click')">Close</button>
+    </div> -->
+  </div>
+</ng-template>
+
+
+<div class="">
+
+
+  <div class="row ">
+    <div class="col-md-6 pt-5">
+      <div class="d-flex align-items-center ps-5">
+        <div><svg class="logo " viewBox="0 0 16 25"  fill="#fc8019">
+            <path
+              d="M15.5397581,11.1409928 C15.6509608,10.509712 15.5235868,10.0243137 15.1951696,9.77089093 C14.7011461,9.38969453 13.9591625,9.18240372 12.1918981,9.18240372 C10.8843181,9.18240372 9.48050894,9.18382005 8.88067307,9.18351656 C8.824972,9.17259055 8.62352934,9.10693329 8.6159428,8.86342483 L8.60775734,4.99753828 C8.60755774,4.75352397 8.80231214,4.55503473 9.04308494,4.55452889 C9.28425707,4.55412423 9.47990987,4.75190531 9.4801096,4.99571727 C9.4801096,4.99571727 9.48609894,7.09432117 9.48669787,7.84012275 C9.48669787,7.91215351 9.52822427,8.08029271 9.69013694,8.12409793 C10.745764,8.40908477 16.0819961,8.20068119 15.9990433,7.22017265 C15.5462467,3.15296419 12.1495732,0 8.02559027,0 C6.72689454,0 5.497376,0.313010053 4.40860776,0.868112227 C1.80303074,2.22496121 -0.0474859557,4.9636474 0.000928137643,8.12703176 C0.0352672176,10.3690901 1.49467783,14.3542524 2.38809268,14.9457747 C2.7998621,15.2186215 3.34210002,15.1176569 5.7669976,15.1176569 C6.86664654,15.1176569 7.89062974,15.1212989 8.39383694,15.1236259 C8.44614414,15.1335401 8.72045734,15.1971741 8.72045734,15.4525191 L8.726846,18.391212 C8.72744507,18.6353275 8.53249094,18.8337155 8.2913188,18.8338167 C8.050546,18.8342213 7.85499294,18.6366427 7.85459374,18.3927295 C7.85459374,18.3927295 7.8760556,17.2135293 7.8760556,16.7737573 C7.8760556,16.6719836 7.88334267,16.4971673 7.59006307,16.3649424 C6.6241768,15.929824 3.48764179,16.1924529 3.31165404,16.6725905 C3.24427359,16.8573211 3.5949514,17.5713563 4.13479358,18.4869157 C5.93330254,21.3601537 7.6990696,23.6004924 7.98456307,23.9589263 C8.00223174,23.9744048 8.0192016,23.9886693 8.03437467,24 C8.26985694,23.7099548 14.5488164,16.7550415 15.5397581,11.1409928 Z"
+              id="Swiggy_Filled"></path>
+          </svg></div>
+
+        <h1 class="mx-2 me-auto swiggy" style="color: #fc8019;">SWIGGY</h1>
+
+        <button class="btn btn-light btn-lg me-3" type="button" (click)="openEnd(contentlogin)">login</button>
+        <button class="btn btn-dark btn-lg" type="button" (click)="openEnd(contentsignup)">signup</button>
+
+      </div>
+      <div class="d-flex flex-column justify-content-center ps-5">
+        <h1 class="pb-3">Hungry ?</h1>
+        <h2 class="text-muted pb-3">Order food from favourite restaurants near you.</h2>
+
+        <div class="input-group shadow bg-body rounded SearchLocation mb-5">
+          <input type="text" class="form-control border-0 " placeholder="Search">
+          <div class="input-group-append">
+            <button class="btn  border-0 locateme" type="button">Locate Me</button>
+            <button class="btn btn-info findfood text-white">Find Food</button>
+          </div>
+        </div>
+
+
+
+        <h3>Popular Cities in India</h3>
+        <h4 class="text-muted">Ahmedabad Bangalore Chennai Delhi Gurgaon Hyderabad Kolkata Mumbai Pune& more.</h4>
+
+      </div>
+
+
+    </div>
+    <div class="col-md-6">
+      <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,h_1340/Lunch1_vlksgq"
+        class="top-img">
+    </div>
+
+  </div>
+
+  <app-about></app-about>
+
+  <app-banner></app-banner>
+</div>
