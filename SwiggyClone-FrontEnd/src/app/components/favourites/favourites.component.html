@@ -1,0 +1,29 @@
+<div class="d-flex justify-content-center">
+  <div class="" *ngFor="let item of FavItems">
+    <div class=" card shadow-lg mb-5 me-4 bg-white rounded">
+    
+      <img class="card-img-top rounded"
+        src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_1024/{{item.imageId}}"
+        alt="image">  
+        <a routerLink="/home/restaurants/delhi/restaurant/{{item.restoId}}" style="text-decoration: none;">
+     </a>
+  
+    <div class="card-body">
+      <div class="d-flex flex-wrap justify-content-between">
+        <div class="d-flex"><mat-icon [ngStyle]="{'color' : 'green'}">star</mat-icon>
+          <h4>{{item.avgRating}}</h4>
+          <h6>({{item.totalRatings}}ratings)</h6>
+        </div>
+  
+        <!-- <h4>{{item.sla.slaString}}</h4> -->
+  
+        <i class="bi" width="16" height="16" [ngClass]="{'bi-suit-heart-fill': isLiked[item.restoId], 'bi-suit-heart': !isLiked[item.restoId]}" [ngStyle]="{'color' : 'red'}"
+          (click)="toggleLike(item.restoId)"></i>
+      </div>
+      <h3 class="card-title">{{item.name}}</h3>
+      <h5 class="text-muted">{{item.cuisines.slice(0,5)}}</h5>
+  
+    </div>
+  </div>
+  </div>
+</div>

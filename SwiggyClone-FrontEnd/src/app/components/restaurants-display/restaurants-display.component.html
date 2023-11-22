@@ -1,0 +1,35 @@
+<div class="container d-flex justify-content-between">
+  <div *ngIf="!restaurants">
+    <mat-spinner></mat-spinner>
+
+  </div>
+  <h1 class="heading" style="font-weight: 500; color : #3d4152;" *ngIf="restaurants&&restaurants.total">{{restaurants.total}} restaurants delivering to your location </h1>
+
+  <div class="d-flex  justify-content-center input-wrapper">
+    <input class="border-0" [(ngModel)]="filter" (input)="filterR()"><mat-icon class="mt-2">search</mat-icon>
+  </div>
+
+  <input class="btn btn-light" type="button" value="Rating" [ngClass]="{'bg-secondary text-white' :isClickedRating}" (click)="filterByRating()">
+
+
+  <input class="btn btn-light" type="button" value="deliveryTime" [ngClass]="{'bg-secondary text-white' :isClickedDelivery}" 
+  (click)="filterByDeliveryTime()">
+  
+
+  <input class="btn btn-light" type="button" value="only Veg" [ngClass]="{'bg-secondary text-white' :isClikcedVeg}" 
+  (click)="filterByVeg()">
+
+  <input class="btn btn-light" type="button" value="clear" 
+  (click)="currLocation()">
+  
+</div>
+
+
+<div *ngIf="isLoading==false" class="d-flex justify-content-between flex-wrap p-5">
+   <div *ngFor="let data of restaurantList">
+    
+    <app-restaurant [restaurant]="data"></app-restaurant>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,30 @@
+:host .mat-tab-group {
+  flex-direction: row;
+  background-color: azure;
+  background-repeat: repeat;
+}
+:host .mat-tab-header {
+  border-bottom: none;
+  background-color: azure;
+  background-repeat: repeat;
+}
+:host .mat-tab-labels {
+  flex-direction: column;
+}
+:host .mat-ink-bar {
+  height: 100%;
+  left: 98% !important;
+}
+:host .mat-tab-body-wrapper {
+  flex: 1 1 auto;
+}
+.body{
+  background-color: #9eb8d1;
+}
+i{
+  color: #2c3136;
+  cursor: pointer;
+}
+.active{
+  color: orange;
+}

@@ -1,0 +1,55 @@
+<div>
+  <div class="d-flex justify-content-center m-5" *ngIf="cart?.length === 0">
+    <h1> Browse Restaurants, Add something and have a great time!</h1>
+  </div>
+  <div class="d-flex justify-content-center" *ngFor="let idx of cart;index as i">
+    <div class="card border-0 mb-5 p-2 bg-body shadow shadow-lg cartcard" >
+      <h1 style="color : #3d4152; font-weight: bolder;" class="">{{restoIdNames[idx[0].restaurantId]}}</h1>
+      <div *ngFor="let items of cart[i]">
+        <div class="card mb-2 p-2 border-0 bg-body">
+          <div class="row justify-content-center align-items-center">
+            <div class="col-8">
+              <p style="font-size: larger; font-weight:400;">{{items.name}}</p>
+    
+              <p class="text-dark">₹ {{items.price }}</p>
+              <!-- <p class="text-muted">{{items.description}}</p> -->
+            </div>
+            <div class="col-4  d-flex justify-content-end align-items-center">
+    
+              <div class="d-flex  flex-column justify-content-end align-items-center">
+                <img class=""
+                src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_1024/{{items.imageId}}"
+                width="100px" height="100px">
+              <br>
+    
+    
+              <div *ngIf="menuQuantityJson?.[items.id]" >
+    
+                <div class="btn-group " role="group" aria-label="Basic example">
+                  <button type="button" (click)="minusOne(items)" class="btn btn-light text-success">-</button>
+                  <button type="button" class="btn btn-light text-success" id="{{items.id}}">
+                    {{menuQuantityJson[items.id]}}
+                  </button>
+                  <button type="button" (click)="plusOne(items)" class="btn btn-light text-success">+</button>
+                </div>
+    
+              </div>
+              </div>
+              
+            </div>
+            <!-- <hr> -->
+          </div>
+        </div>
+  
+      </div>
+      <div class="d-flex  ">
+        <h1 class="ms-auto me-2">total Price : {{totalPrice[idx[0].restaurantId] }}</h1>
+        <a routerLink="/home/checkout" >
+          <button (click)="checkout(idx,totalPrice[idx[0].restaurantId])" class="ms-auto  mb-2 me-5 btn btn-success">checkout</button>
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+</div>

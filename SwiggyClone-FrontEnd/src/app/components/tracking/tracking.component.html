@@ -1,0 +1,99 @@
+<div class="row bg-body shadow shadow-lg rounded">
+  <div class="col-6 p-2 ">
+
+    <div class="map-container">
+      <div class="map-frame">
+        <div id="map"></div>
+      </div>
+    </div>
+    <!-- <app-osm-map [latitude]="latitude"    -->
+  </div>
+  <div class="col-3">
+    <div class="row">
+      
+      <div class="col-md-12 ">
+         <div id="tracking-pre"></div>
+         <div id="tracking">
+            <div class="text-center tracking-status-intransit">
+               <p class="tracking-status text-tight">Order status</p>
+            </div>
+            <div class="tracking-list">
+               <div class="tracking-item">
+                  <div class="tracking-icon status-intransit">
+                    <i class="fa-solid fa-circle-check" style="color: #25a727; "></i>
+                  </div>
+                  <div class="tracking-content">Restaurant accepted your order</div>
+               </div>
+               <div class="tracking-item">
+                  <div class="tracking-icon status-intransit">
+                   
+
+                    <i class="fa-solid fa-circle-check" style="color: #25a727; "></i>
+                  </div>
+                  <div class="tracking-content">
+                    Delivery Partner Reached restaurant
+                  </div>
+               </div>
+               <div class="tracking-item">
+                  <div class="tracking-icon status-intransit">
+                    <i class="fa-solid fa-circle-check" style="color: #25a727; "></i>
+                  </div>
+                  
+                  <div class="tracking-content">
+                    Delivery Partner received order
+                  </div>
+               </div>
+               <div class="tracking-item">
+                  <div class="tracking-icon status-outfordelivery">
+                    <i class="fa-solid fa-clock" style="color: yellow; "></i>
+                  </div>
+                  <div class="tracking-content">
+                    Delivery Partner reaching your destination
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+  </div>
+  <div class="col-3 p-2">
+    <div class="card border-1 p-5 bg-body cartcard">
+      <h1 style="color : #3d4152; font-weight: bolder;" class="">{{restoIdNames[orderItems[0].restaurantId]}}</h1>
+      <div class="" *ngFor="let items of orderItems;index as i">
+
+        <div class="d-flex justify-content-between">
+          <div>
+            <p style="font-size: small; font-weight:400;">{{items.name}}</p>
+
+            <p class="text-dark">₹ {{items.price }}</p>
+          </div>
+          <p class="text-muted">X {{items.quantity}}</p>
+
+          <p class="text-dark"> ₹ {{items.price*items.quantity}}</p>
+        </div>
+
+
+      </div>
+
+      <h4 class="text-dark pt-2">Bill Total</h4>
+      <div class="d-flex justify-content-between">
+        <p class="text-muted">Item Total </p>
+        <p class="text-muted">₹ {{totalPrice}}</p>
+      </div>
+      <div class="d-flex justify-content-between">
+
+        <p class="text-muted">Delivery Fee </p>
+        <p class="text-muted">₹ 50</p>
+      </div>
+      <hr style="border-top: dotted 2px;">
+      <div class="d-flex justify-content-between">
+        <p class="text-muted">Item Total </p>
+        <p class="text-muted">₹ {{totalPrice + 50}}</p>
+      </div>
+      <div>
+        <h3>Delivery Status</h3>
+        
+      </div>
+    </div>
+  </div>
+</div>
